@@ -80,15 +80,20 @@ export default {
             this.food = ""
 
             // DBからデータ取得
-            const docRef = doc(db, "userData", this.uid)
-            const docSnap = await getDoc(docRef)
-            if (!docSnap.exists()) {
-                this.food = "データ未登録"
-                this.timeStamp = ""
-                return
+            try {
+                const docRef = doc(db, "userData", this.uid)
+                const docSnap = await getDoc(docRef)
+                if (!docSnap.exists()) {
+                    this.food = "データ未登録"
+                    this.timeStamp = ""
+                    return
+                }
+                this.food = docSnap.get('food')
+                this.timestamp = "更新日時: "+docSnap.get('timestamp').toDate().toLocaleString()
+            } catch(error) {
+                this.food = "データ取得に失敗しました"
+                console.log(error)
             }
-            this.food = docSnap.get('food')
-            this.timestamp = "更新日時: "+docSnap.get('timestamp').toDate().toLocaleString()
         },
 
         // DBへ好きな食べ物を登録する
@@ -112,11 +117,16 @@ export default {
             // 書き込み開始
             this.isLoading = true
             const docRef = doc(db, "userData", this.uid)
-            await setDoc(docRef, {
-                food: mFood,
-                timestamp: serverTimestamp()
-            },
-            { merge: true })
+            try {
+                await setDoc(docRef, {
+                    food: mFood,
+                    timestamp: serverTimestamp(),
+                },
+                { merge: true })
+            } catch(error) {
+                console.log(error)
+                alert("エラーが発生しました")
+            }
 
             // データ再取得
             this.getFavoriteFood()
