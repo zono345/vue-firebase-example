@@ -7,7 +7,7 @@ https://vue-firebase-example-5340b.web.app/
 https://vue-firebase-example-5340b.firebaseapp.com/
   
 - アプリ作成のチュートリアルはQiitaにまとめました。  
-https:XXXXXXXXX
+https://qiita.com/zono345/items/27744ef00b97b0cd8886
   
 主な機能
 ------------
