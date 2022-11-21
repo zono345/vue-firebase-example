@@ -2,7 +2,10 @@
 
 Introduction
 ------------
-- Vue.jsとFirebaseを使ったWebアプリです。
+- Vue.jsとFirebaseを使ったサンプル用Webアプリです。※2つのURLともに内容は同じです。  
+https://vue-firebase-example-5340b.web.app/  
+https://vue-firebase-example-5340b.firebaseapp.com/
+  
 - アプリ作成のチュートリアルはQiitaにまとめました。  
 https:XXXXXXXXX
   
